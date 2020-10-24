@@ -20,17 +20,17 @@ function ToggleButton(props) {
 
 class Board extends React.Component {
     renderSquare(i) {
-      return <Square 
+      return <Square
+        key={i} 
         value={this.props.squares[i]} 
         shouldHighlight={(this.props.highlightedSquares || []).includes(i)}
         onClick={() => this.props.onClick(i)}/>;
     }
 
     render() {
-        
         return (<div>
             {
-                [0,1,2].map(row => (<div className="board-row"> {[0,1,2].map(col => this.renderSquare(row * 3 + col))} </div>))
+                [0,1,2].map(row => (<div key={row} className="board-row"> {[0,1,2].map(col => this.renderSquare(row * 3 + col))} </div>))
             }
         </div>);
     }
